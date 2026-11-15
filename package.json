@@ -1,0 +1,15 @@
+{
+    "name": "weather-activity-agent",
+    "description": "ReAct-prompting AI agent that gets local weather and suggests nearby activities",
+    "scripts": {
+        "start": "vite",
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "openai": "4.12.1",
+        "vite": "latest"
+    },
+    "devDependencies": {}
+}
