@@ -17,25 +17,34 @@ export async function getLocation() {
     }
 }
 
-export const functions = [
+export const tools = [
     {
-        function: getCurrentWeather,
-        parameters: {
-            type: "object",
-            properties: {
-                location: {
-                    type: "string",
-                    description: "The location from where to get the weather",
+        type: "function",
+        function: {
+            function: getCurrentWeather,
+            parse: JSON.parse,
+            description: "Get the current weather",
+            parameters: {
+                type: "object",
+                properties: {
+                    location: {
+                        type: "string",
+                        description: "The location from where to get the weather",
+                    },
                 },
+                required: ["location"],
             },
-            required: ["location"],
         },
     },
     {
-        function: getLocation,
-        parameters: {
-            type: "object",
-            properties: {},
+        type: "function",
+        function: {
+            function: getLocation,
+            description: "Get the user's current location",
+            parameters: {
+                type: "object",
+                properties: {},
+            },
         },
     },
 ];

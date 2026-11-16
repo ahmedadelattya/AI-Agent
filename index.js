@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import { getCurrentWeather, getLocation, functions } from "./tools";
+import { tools } from "./tools";
 
 export const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
@@ -16,11 +16,11 @@ async function agent(query) {
         { role: "user", content: query },
     ];
 
-    const runner = openai.beta.chat.completions
-        .runFunctions({
+    const runner = openai.chat.completions
+        .runTools({
             model: "gpt-3.5-turbo-1106",
             messages,
-            functions,
+            tools,
         })
         .on("message", (message) => console.log(message));
 
@@ -29,4 +29,3 @@ async function agent(query) {
 }
 
 await agent("What's the current weather in my current location?");
-
